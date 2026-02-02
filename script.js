@@ -1,33 +1,22 @@
 //your JS code here. If required.
-const container = docment.getElementById("container");
+const container = document.getElementById("container");
+
 const SQUARES = 800;
 
-const colors = [
-	"#e74c3c"
-	"#8e44ad"
-	"#3498db"
-"#e67e22"
-"#2ecc71"
-];
+const colors = ["red", "blue", "green", "yellow", "purple"];
 
-for (let i = 0; i < SQUARES; i++){
-	const square = document.createElement("div");
-	square.classList.add("square");
+for (let i = 0; i < SQUARES; i++) {
+  const square = document.createElement("div");
+  square.classList.add("square");
 
-	square.addEventListener("mouseover", () => setColor(square));
-	square.addEventListener("mouseout", () => removeColor(square));
+  square.addEventListener("mouseover", () => {
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    square.style.backgroundColor = color;
+  });
 
-	container.appendChilld(square);
-}
-function setColor(element){
-	const color = getRandomColor();
-	element.style.backgroundColor = color;
-}
+  square.addEventListener("mouseout", () => {
+    square.style.backgroundColor = "#1d1d1d";
+  });
 
-function removeColor(element){
-	element.style.backgroundColor = "#1d1d1d";
-}
-
-function getRandomColor(){
-	return color[Math.floor(Math.random() *colors.length)];
+  container.appendChild(square);
 }
